@@ -53,6 +53,26 @@ struct node_s{
 
 typedef struct node_s node_t;
 
+
+/**
+ * Contain a node's information and a pointer to the next node
+ */
+typedef struct node node_l;
+
+struct node {
+	node_t* node; 
+	node_l* next;
+};
+
+/**
+ * Data structure containing a node's information and a pointer to the
+ */
+typedef struct {
+	node_l* head;
+	node_l* foot;
+} list_t;
+
+
 /**
  * GLOBAL VARIABLES
 */
@@ -108,5 +128,11 @@ char* action_cstr(move_t move);
 void print_solution();
 void play_solution();
 
+/**
+ *  Useful functions for freeing nodes created for the pegsol graph
+ */
+list_t* make_empty_list();
+void free_list(list_t *list);
+list_t* insert_at_foot(list_t *list, node_t* value);
 
 #endif

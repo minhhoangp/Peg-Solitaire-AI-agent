@@ -1,5 +1,6 @@
 #include "utils.h"
 #include "layouts.h"
+#include <assert.h>
 
 void execute_move_t(state_t* state, position_s* selected_peg, move_t jump) {
     int8_t x = selected_peg->x;
@@ -342,4 +343,55 @@ void play_solution(){
 			usleep(500000);
 		}
 	}
+}
+
+/* =====================================================================
+   Program written by Alistair Moffat, as an example for the book
+   "Programming, Problem Solving, and Abstraction with C", Pearson
+   Custom Books, Sydney, Australia, 2002; revised edition 2012,
+   ISBN 9781486010974.
+
+   See http://people.eng.unimelb.edu.au/ammoffat/ppsaa/ for further
+   information.
+
+   Prepared December 2012 for the Revised Edition.
+   ================================================================== */
+// create an empty linked list of type node_t
+list_t *make_empty_list(void) {
+	list_t *list;
+	list = (list_t*)malloc(sizeof(*list));
+	assert(list!=NULL);
+	list->head = list->foot = NULL;
+	return list;
+}
+
+// free the linked list
+void free_list(list_t *list) {
+	node_l *curr, *prev;
+	assert(list!=NULL);
+	curr = list->head;
+	while (curr) {
+		prev = curr;
+		curr = curr->next;
+		free(prev->node);
+		free(prev);
+	}
+	free(list);
+}
+
+// insert each node at the end of the linked list
+list_t* insert_at_foot(list_t *list, node_t* value) {
+	node_l *new;
+	new = (node_l*)malloc(sizeof(*new));
+	assert(list!=NULL && new!=NULL);
+	new->node = value;
+	new->next = NULL;
+	if (list->foot==NULL) {
+		/* this is the first insertion into the list */
+		list->head = list->foot = new;
+	} else {
+		list->foot->next = new;
+		list->foot = new;
+	}
+	return list;
 }
