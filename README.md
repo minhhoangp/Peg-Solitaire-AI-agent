@@ -2,7 +2,8 @@
 A practice of Depth-first search (DFS) algorithms. 
 
 ## Introduciton
-In this project, I will build a AI agent using Depth-first Search(DFS) strategy to play play Peg Solitaire (https://www.pegsolitaire.org/) game and try to achieve the highest score.
+In this project, I will build a AI agent using Depth-first Search(DFS) strategy to play Peg Solitaire (https://www.pegsolitaire.org/) game and try to achieve the highest score.
+![image](https://user-images.githubusercontent.com/88297894/165080359-aa50b317-5f90-422f-b949-5bd51fc2036a.png)
 
 ## Implementation
 Look at the file peg solitaire.c (main function) to know which function is called to call the algorithm.
